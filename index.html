@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazing Calculation Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h3>Cole's Amazing Calculation Machine</h3>
+    <p>Watch it do stuff!</p>
+
+    <label for="selectFunction">Select a function: </label>
+    <select id="selectFunction">
+        <option value="">--Make a choice--</option>
+        <option value="sum7">Add 7 to a number</option>
+        <option value="mult2">Multiply 2 numbers</option>
+        <option value="cap1">Capitalize first letter</option>
+        <option value="takeLast">Isolate last letter</option>
+    </select>
+
+    <p class="instructions"></p>
+    <input type="text">
+    <p class="output"></p>
+
+
+    <script>
+        const select = document.querySelector('select');
+        const input = document.querySelector('input');
+        const para = document.querySelector('.instructions');
+        const output = document.querySelector('.output');
+
+        // Set the calculate function
+        select.addEventListener('change', setCalculate);
+
+        // Main loop to get and push data
+        function setCalculate() {
+            // Clear the output from previous calculation
+            output.textContent = '';
+            const choice = select.value;
+
+            if (choice === 'sum7') {
+                para.textContent = "Enter a number.";
+                input.addEventListener('change', () => {
+                    let sumInput = parseFloat(input.value);
+                    output.textContent = `Result is: ${add7(sumInput)}.`;
+                });
+
+            } else if (choice === 'mult2') {
+                para.textContent = "Enter two numbers separated by a comma.";
+                input.addEventListener('change', () => {
+                    output.textContent = `Result is: ${multiply(input.value)}.`;
+                });
+            } else if (choice === 'cap1') {
+                para.textContent = "Enter a word.";
+                input.addEventListener('change', () => {
+                    output.textContent = `Result is: ${capitalizeFirst(input.value)}.`;
+                });
+            } else if (choice === 'takeLast') {
+                para.textContent = "Enter a word.";
+                input.addEventListener('change', () => {
+                    output.textContent = `Result is: ${lastLetter(input.value)}.`;
+                });
+            } else {
+                para.textContent = "Please choose a function.";
+            }
+        }
+
+        // Add 7 to the input number
+        function add7(num) {
+            return +num + 7;
+        }
+
+        // Multiply two inputs together (CSV)
+        function multiply(string) {
+            let inputArray = string.split(",");
+            return inputArray[0] * inputArray[1];
+        }
+
+        // Return string with first letter capitalized
+        function capitalizeFirst(string) {
+            return string.substr(0,1).toUpperCase() + string.substr(1).toLowerCase();
+        }
+
+        // Take a string and return last letter
+        function lastLetter(string) {
+            return string.substr(-1, 1);
+        }        
+
+        
+
+    </script>
+</body>
+</html>

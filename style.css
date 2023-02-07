@@ -1,0 +1,13 @@
+/* style.css */
+/* Stylesheet for JS Functions page */
+
+/* import Roboto font and variations */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,300&display=swap');
+
+/* general formatting */
+body {
+    font-family: 'Roboto', sans;
+    background: blanchedalmond;
+    text-align: center;
+}
+
